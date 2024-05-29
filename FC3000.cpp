@@ -11,8 +11,6 @@ int8_t FC3000::connectToDevice() {
     return -1;
   }
 
-  bleClient->setMTU(517);
-
   fc3000Service = bleClient->getService(serviceUUID);
   if (fc3000Service == nullptr) {
     return -2;
@@ -34,6 +32,8 @@ int8_t FC3000::connectToDevice() {
   } else {
     return -5;
   }
+
+  bleClient->setMTU(517);
 }
 
 void FC3000::dimm(const uint8_t percent) {
